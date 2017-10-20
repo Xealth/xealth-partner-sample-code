@@ -10,7 +10,7 @@ Simple command line utility for Node.js that demonstrates how to use the Xealth 
  * Install modules (you only need to do this once)
 
    ```
-  cd xealth-partner-api/sample/js
+  cd xealth-partner-sample-code/partner-api
   npm install
  ```
 
@@ -57,7 +57,7 @@ These are some simple API usage demos. You can feel free to try them out against
 ./run demo profile
 ```
 
-* Xealth calling your monitor endpoints
+* Xealth calling your monitor endpoints using the patient information set in `config.yaml`
 
  ```
 ./run demo monitor
