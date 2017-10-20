@@ -1,0 +1,11 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+  "search.exclude": {
+    "node_modules": true
+  },
+  "files.exclude": {
+    "node_modules": true
+  },
+  "javascript.validate.enable": false,
+  "flow.useNPMPackagedFlow": true
+}

@@ -1,0 +1,15 @@
+{
+ "parserOptions": {
+    "ecmaVersion": 6
+  },
+  "env": {
+    "node": true
+  },
+  "rules": {
+    "semi" : 0,
+    "max-len": [0, 120, 2],
+    "no-unneeded-ternary": 0,
+    "space-before-function-paren": 0,
+    "no-unused-vars": 1
+  }
+}

@@ -1,0 +1,22 @@
+partnerId:
+serverBase: https://dev.xealth.io/v1
+keyInfo:
+  apiKey:
+  secret:
+endpoints:
+  registerPatient: https://your.server.example.com/register_patient
+  monitor:
+    getPrograms: https://your.server.example.com/get_programs
+    getProgramUrl: https://your.server.example.com/get_program_url
+test:
+  deployment: shslab
+  patient:
+    id: Z4153431
+    type: external
+  # patient: # Jane Xealth
+  #   id: 740657012
+  #   type: enterprise
+  # Test provider ID
+  provider:
+    id: P123456789
+    type: epic_user

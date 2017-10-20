@@ -1,0 +1,23 @@
+{
+  "parser"  : "babel-eslint",
+  "plugins" : [
+    "flowtype"
+  ],
+  "env" : {
+    "node" : true
+  },
+  "extends" : [
+    "standard"
+  ],
+  "globals" : {
+  },
+  "rules": {
+    "semi" : 0,
+    "max-len": [0, 120, 2],
+    "no-unneeded-ternary": 0,
+    "flowtype/define-flow-type": 1,
+    "flowtype/use-flow-type": 1,
+    "space-before-function-paren": 0,
+    "no-unused-vars": 1
+  }
+}

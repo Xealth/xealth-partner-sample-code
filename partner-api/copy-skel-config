@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+SKEL=./config-skel.yaml
+CONFIG=./config.yaml
+
+if [ ! -f $CONFIG ] ; then
+  echo "Creating $CONFIG from skeleton. You should edit this file."
+  cp $SKEL $CONFIG
+else
+  echo "Not doing anything ($CONFIG exists)"
+fi

@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+main=$(node -p 'require("./package.json")'.main)
+
+alias runcmd="node $main"
+runcmd "$@"

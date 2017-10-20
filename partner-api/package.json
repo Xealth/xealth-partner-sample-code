@@ -1,0 +1,56 @@
+{
+  "name": "partnerSample",
+  "version": "1.0.0",
+  "description": "Sample code for Xealth Partner API",
+  "main": "./lib/index.js",
+  "private": "true",
+  "files": [
+    "lib/"
+  ],
+  "scripts": {
+    "postinstall": "./copy-skel-config",
+    "build": "gulp lib"
+  },
+  "repository": "ssh://git@bitbucket.org/xealthcommunity/xealth-partner-api.git",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "es6-promisify": "^5.0.0",
+    "http-status-codes": "^1.1.6",
+    "js-yaml": "^3.9.1",
+    "lodash": "^4.17.4",
+    "moment": "^2.17.1",
+    "read-yaml": "^1.1.0",
+    "request": "^2.79.0",
+    "yargs": "^6.6.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.0",
+    "babel-eslint": "^7.2.3",
+    "babel-plugin-root-import": "^5.0.0",
+    "babel-plugin-source-map-support-for-6": "0.0.5",
+    "babel-plugin-transform-flow-strip-types": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.23.0",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-node6": "^11.0.0",
+    "babel-root-import": "^4.1.8",
+    "child-process-promise": "^2.2.1",
+    "del": "^2.2.2",
+    "eslint": "^3.18.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-babel": "^4.1.1",
+    "eslint-plugin-flowtype": "^2.34.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "flow": "^0.2.3",
+    "flow-bin": "^0.47.0",
+    "flow-copy-source": "^1.1.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sourcemaps": "^2.4.1",
+    "gulp-watch": "^4.3.11",
+    "run-sequence": "^1.2.2",
+    "stream-to-promise": "^2.2.0"
+  }
+}
