@@ -75,6 +75,11 @@ export default class Sender {
       accept: 'application/json,application/vnd.error+json'
     })
 
+    if (this.verbosity > 0) {
+      console.log(' ** Request Headers **')
+      console.log(options)
+    }
+
     return request(options).then(response => {
       dumpResponse(response, this.verbosity)
       // Throw an error to abort promise chain
