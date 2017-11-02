@@ -9,10 +9,11 @@ Simple command line utility for Node.js that demonstrates how to use the Xealth 
 
  * Install modules (you only need to do this once)
 
-   ```
+```
   cd xealth-partner-sample-code/partner-api
   npm install
- ```
+
+```
 
      Note: this also creates `config.yaml` if it doesn't exist (see next step)
 
@@ -28,7 +29,7 @@ Simple command line utility for Node.js that demonstrates how to use the Xealth 
 
  * Compile the code
 
-  ```
+```
    gulp lib
  ```
 
@@ -37,9 +38,9 @@ Simple command line utility for Node.js that demonstrates how to use the Xealth 
 
  * Run the script
 
-  ```
+```
   ./run
- ```
+```
 
   This is just a wrapper that calls `node ./lib/index.js`
 
@@ -51,22 +52,42 @@ Simple command line utility for Node.js that demonstrates how to use the Xealth 
 
 These are some simple API usage demos. You can feel free to try them out against our test server.
 
+
 * Partner calling Xealth to create and delete a profile
 
- ```
+```
 ./run demo profile
 ```
 
+
 * Xealth calling your monitor endpoints using the patient information set in `config.yaml`
 
- ```
+
+```
 ./run demo monitor
 ```
 
+
 * Partner registering a patient registration endpoint then calling test api to callback the partner patient registration endpoint
 
- ```
+
+```
 ./run demo register
+```
+
+
+* Partner calling Xealth to create and delete a preorder endpoint
+
+
+```
+./run demo preorder
+```
+
+* Partner calling Xealth to create and delete a preorder forms
+
+
+```
+./run demo forms
 ```
 
 
@@ -75,6 +96,7 @@ These are some simple API usage demos. You can feel free to try them out against
 Here is how you can try out the alert API.
 
 First you need to order/prescribe a program in DigitalCare.
+
 
 - Open a DigitalCare test link. For example:
 
