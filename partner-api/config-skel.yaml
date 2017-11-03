@@ -5,6 +5,7 @@ keyInfo:
   secret:
 endpoints:
   registerPatient: https://your.server.example.com/register_patient
+  preorder: https://your.server.example.com/preorder
   monitor:
     getPrograms: https://your.server.example.com/get_programs
     getProgramUrl: https://your.server.example.com/get_program_url

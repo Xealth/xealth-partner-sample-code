@@ -166,4 +166,54 @@ export default class PartnerApi {
     const endpoint = `/partner/${this.partnerId}/renew_token`
     return this.sendRequest(endpoint, 'post', {xpdat})
   }
+
+  putPreorderEndpoint(body: Object) {
+    const endpoint = `/partner/${this.partnerId}/endpoint/pre_order`
+    return this.sendRequest(endpoint, 'put', body)
+  }
+
+  getPreorderEndpoint() {
+    const endpoint = `/partner/${this.partnerId}/endpoint/pre_order`
+    return this.sendRequest(endpoint, 'get')
+  }
+
+  deletePreorderEndpoint() {
+    const endpoint = `/partner/${this.partnerId}/endpoint/pre_order`
+    return this.sendRequest(endpoint, 'delete')
+  }
+  /**
+   * Registers profile then registers endpoint with profile as default
+   */
+  setPreordeEndpointCreateProfile(profile: Profile, endpoint: string) {
+    let self = this
+    return this.registerProfile(profile.profileId, profile).then(function() {
+      let body = {
+        preorder: {
+          endpoint,
+          profile: profile.profileId
+        }
+      }
+      return self.putPreorderEndpoint(body)
+    })
+  }
+
+  putPreorderForm(formId: string, body: Object) {
+    const endpoint = `/partner/${this.partnerId}/form/${formId}`
+    return this.sendRequest(endpoint, 'put', body)
+  }
+
+  getPreorderForm(formId: string) {
+    const endpoint = `/partner/${this.partnerId}/form/${formId}`
+    return this.sendRequest(endpoint, 'get')
+  }
+
+  getPreorderForms() {
+    const endpoint = `/partner/${this.partnerId}/forms`
+    return this.sendRequest(endpoint, 'get')
+  }
+
+  deletePreorderForm(formId: string) {
+    const endpoint = `/partner/${this.partnerId}/form/${formId}`
+    return this.sendRequest(endpoint, 'delete')
+  }
 }
