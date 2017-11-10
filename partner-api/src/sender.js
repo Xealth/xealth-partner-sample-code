@@ -51,6 +51,7 @@ export default class Sender {
   baseUrl: ?string
   constructor (keyInfo: KeyInfo, opts: Opts = {}) {
     opts = Object.assign({}, DEFAULT_OPTS, opts)
+    // console.log(JSON.stringify(opts, null, 2))
     this.keyInfo = keyInfo
     this.baseUrl = opts.baseUrl
     this.verbosity = opts.verbose || 0
@@ -87,6 +88,9 @@ export default class Sender {
         throw new Error(`Unexpected response status: ${response.statusCode}`)
       }
       return response
+    }).catch(err => {
+      console.log(chalk.red(`Exception: ${err.toString()}`))
+      throw err
     })
   }
 }
