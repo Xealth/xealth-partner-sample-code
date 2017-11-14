@@ -83,11 +83,9 @@ export default class PartnerApi {
 
   getPatientInfo(profileId: string, body: Object) {
     // const body = {
-    //   patientId,
-    //   hospital,
-    //   orderId,
+    //   xpdat,
     //   format // optional
-    // };
+    // }
     const endpoint = `/partner/${this.partnerId}/patientInfo/${profileId}`
     return this.sendRequest(endpoint, 'post', body)
   }
