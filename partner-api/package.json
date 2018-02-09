@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Sample code for Xealth Partner API",
   "main": "./lib/index.js",
-  "private": "true",
+  "private": true,
   "files": [
     "lib/"
   ],
@@ -40,6 +40,8 @@
     "eslint-config-standard": "^10.2.1",
     "eslint-plugin-babel": "^4.1.1",
     "eslint-plugin-flowtype": "^2.34.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^5.2.1",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
     "flow": "^0.2.3",
