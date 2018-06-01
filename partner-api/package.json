@@ -11,7 +11,7 @@
     "postinstall": "./copy-skel-config",
     "build": "gulp lib"
   },
-  "repository": "ssh://git@bitbucket.org/xealthcommunity/xealth-partner-api.git",
+  "repository": "github:Xealth/xealth-partner-sample-code",
   "license": "MIT",
   "dependencies": {
     "chalk": "^1.1.3",
