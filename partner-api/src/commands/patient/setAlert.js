@@ -1,5 +1,4 @@
 /** @flow */
-import _ from 'lodash'
 import moment from 'moment'
 import PartnerApi from '~/partnerApi'
 import loadConfig from '~/config'

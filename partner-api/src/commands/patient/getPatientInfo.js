@@ -1,6 +1,4 @@
 /** @flow */
-import _ from 'lodash'
-import moment from 'moment'
 import PartnerApi from '~/partnerApi'
 import loadConfig from '~/config'
 import chalk from 'chalk'
@@ -28,7 +26,6 @@ function main(argv) {
     console.log(response.body)
   })
 }
-
 
 exports.command = 'get-info <xpdat>'
 exports.describe = 'Gets patient info using given xpdat (obtained from call to register patient endpoint)'
