@@ -30,7 +30,7 @@ Simple command line utility for Node.js that demonstrates how to use the Xealth 
  * Compile the code
 
 ```
-   gulp lib
+   npm run build
  ```
 
   This compiles code in ./src and outputs to ./lib. Basically it runs babel and strips out the flow type checking.
