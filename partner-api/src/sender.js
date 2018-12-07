@@ -1,5 +1,4 @@
 /** @flow */
-import Url from 'url'
 import _ from 'lodash'
 import promisify from 'es6-promisify'
 const request = promisify(require('request'))
@@ -84,7 +83,7 @@ export default class Sender {
     return request(options).then(response => {
       dumpResponse(response, this.verbosity)
       // Throw an error to abort promise chain
-      if (expectedStatus && response.statusCode != expectedStatus) {
+      if (expectedStatus && response.statusCode !== expectedStatus) {
         throw new Error(`Unexpected response status: ${response.statusCode}`)
       }
       return response

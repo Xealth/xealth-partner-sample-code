@@ -15,11 +15,10 @@ function send(sender, body, endpointName, method = 'PUT') {
     console.log(`Skipping (no endpoint for '${endpointName}' in config)`)
     return Promise.resolve()
   }
-  return sender.sendRequest(endpoint, method, body).catch(err => {
+  return sender.sendRequest(endpoint, method, body).catch((/* err */) => {
     // Swallow error to keep going...
   })
 }
-
 
 function getCommonBody() {
   return {

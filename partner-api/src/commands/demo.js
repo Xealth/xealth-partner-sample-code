@@ -1,5 +1,5 @@
 /** @flow */
-import type yargs from 'yargs'
+import yargs from 'yargs'
 exports.command = 'demo <command>';
 exports.describe = 'Performs demo calls';
 exports.builder = function(yargs: yargs) {
