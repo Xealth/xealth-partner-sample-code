@@ -21,7 +21,7 @@ function registerEndpointAndProfile(config, api) {
     // Name is arbitrary
     profileId: 'partner_profile',
     // Attributes that identify what data you need (what you want sent in the POST to your endpoint)
-    attributes: ['demographics', 'coverage']
+    attributes: ['demographicsV1']
   }
 
   return api.setPatientRegisterEndpointCreateProfile(profile, endpoint)
