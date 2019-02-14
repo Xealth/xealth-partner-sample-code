@@ -4,7 +4,7 @@ import loadConfig from '~/config'
 
 function demo(api: PartnerApi) {
   return api.registerProfile('myProfile', {
-    attributes: ['demographics', 'medications']
+    attributes: ['demographicsV1']
   }).then(() => {
     return api.listProfiles()
   }).then(() => {
