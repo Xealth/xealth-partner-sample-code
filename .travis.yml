@@ -2,4 +2,5 @@ language: node_js
 node_js:
   - lts/*
 before_install: cd partner-api
+before_script: npm run audit-checker
 script: npm run build
