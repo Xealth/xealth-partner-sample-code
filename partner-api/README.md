@@ -105,7 +105,7 @@ First you need to order/prescribe a program in DigitalCare.
 ```
  In the example, the link is pointing to our dev server (`digitalcare-dev.xealth.io`) and using the test deployment "shslab" with patient "Z4153431". This deployment and patient id should match the values in the config.yaml.
 
- This link also containsa an encrypted signature to authenticate the call. Please contact Xealth.
+ This link also contains an encrypted signature to authenticate the call. Please contact Xealth.
 
  Please contact Xealth for an updated URL that works for your environment.
 

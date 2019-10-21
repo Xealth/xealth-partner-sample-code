@@ -13,12 +13,9 @@ let argv = yargs
 // Enable source maps if running default task or --sourceMaps is passed
 let enableSourceMaps = argv.sourceMaps || (argv['_'].length === 0)
 
-let rootImportPlugin = ['babel-root-import', {'rootPathPrefix': '~', 'rootPathSuffix': './lib'}]
+let rootImportPlugin = ['root-import', {'rootPathPrefix': '~', 'rootPathSuffix': './lib'}]
 
-let rootImportPluginTest = ['babel-root-import',
-  [{'rootPathPrefix': '~', 'rootPathSuffix': './lib'},
-    {'rootPathPrefix': '@', 'rootPathSuffix': './test/compiled'}
-  ]]
+let rootImportPluginTest = ['root-import', {'rootPathPrefix': '~', 'rootPathSuffix': './lib'}]
 
 // Module source
 new Gulper('./src', './lib', {includeSourceMaps: enableSourceMaps, rootImportPlugin})

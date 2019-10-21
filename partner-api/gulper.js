@@ -72,7 +72,7 @@ function getDefaultOpts(dest: string): GulperOpts {
     // Ignore errors in pipeline (e.g. while running gulp-watch)?
     ignorePipelineErrors: false,
     // Transforms symbol in import/require path (e.g. '~') to root of compile output (or other path)
-    rootImportPlugin: ['babel-root-import', {'rootPathPrefix': '~', 'rootPathSuffix': dest}]
+    rootImportPlugin: ['root-import', {'rootPathPrefix': '~', 'rootPathSuffix': dest}]
   }
 }
 
@@ -144,7 +144,7 @@ export default class Gulper {
         .pipe(plumber(plumberOpts))
         .pipe(sourceMaps.init())
         .pipe(babel({
-          plugins: [this.opts.rootImportPlugin, 'babel-plugin-source-map-support-for-6']
+          plugins: [this.opts.rootImportPlugin, 'source-map-support']
         }))
         // Passing destPath makes source paths show up correctly
         .pipe(sourceMaps.write('.', {destPath: this.dest}))

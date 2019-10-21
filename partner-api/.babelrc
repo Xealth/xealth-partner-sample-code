@@ -1,6 +1,16 @@
 {
-  "plugins": [
-    "transform-flow-strip-types", "transform-object-rest-spread"
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": true
+        }
+      }
+    ]
   ],
-  "presets": ["node6"]
+  "plugins": [
+    "@babel/proposal-object-rest-spread",
+    "@babel/transform-flow-strip-types"
+  ]
 }
