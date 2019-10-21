@@ -10,7 +10,7 @@ Simple command line utility for Node.js that demonstrates how to use the Xealth 
  * Install modules (you only need to do this once)
 
 ```
-  cd xealth-partner-sample-code/partner-api
+  cd xealth-partner-sample-code
   npm install
 
 ```
