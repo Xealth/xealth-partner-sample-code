@@ -1,22 +1,21 @@
-/** @flow */
 import Sender from './sender'
 
-import type moment from 'moment'
-import type {KeyInfo, Opts as SenderOpts} from './sender'
+import {Moment} from 'moment'
+import {KeyInfo, Opts as SenderOpts} from './sender'
 
-type Filters = Object
-type Profile = Object
+type Filters = Record<string, any>
+type Profile = any
 
-export type ProviderMessage = 'alert'|'ehrMessage'|'contextual'
+export type ProviderMessage = 'alert' | 'ehrMessage' | 'contextual'
 export type EnrollPatientBody = {
-  deployment: string,
-  patientId: string,
+  deployment: string
+  patientId: string
   patientIdType: string
 }
 
 export type RegisterProfileBody = {
-  attributes: Array<string>,
-  startDate?: string,
+  attributes: Array<string>
+  startDate?: string
   endDate?: string
 }
 
@@ -28,27 +27,36 @@ export default class PartnerApi {
   sendRequest: typeof Sender.prototype.sendRequest
   constructor(partnerId: string, keyInfo: KeyInfo, opts: SenderOpts = {}) {
     this.partnerId = partnerId
-    let sender = new Sender(keyInfo, opts)
+    const sender = new Sender(keyInfo, opts)
     this.sendRequest = sender.sendRequest.bind(sender)
   }
 
-  sendProviderMessage(messageType: ProviderMessage, xpdat: string, params: Object) {
+  sendProviderMessage(
+    messageType: ProviderMessage,
+    xpdat: string,
+    params: Record<string, any>
+  ) {
     const endpoint = `/partner/${this.partnerId}/provider/message`
-    let body = Object.assign({}, {xpdat, messageType}, params)
+    const body = Object.assign({}, {xpdat, messageType}, params)
     return this.sendRequest(endpoint, 'post', body)
   }
 
   /**
    * programId not needed if xpdat contains order
    */
-  setAlert(xpdat: string, programId: ?string, expiration: ?moment) {
+  setAlert(xpdat: string, programId: string | null, expiration: Moment | null) {
     return this.sendProviderMessage('alert', xpdat, {
       programId,
       expiration: expiration ? expiration.utc().toISOString() : null
     })
   }
 
-  sendEhrMessage(xpdat: string, subject: string, body: string, expiration: moment) {
+  sendEhrMessage(
+    xpdat: string,
+    subject: string,
+    body: string,
+    expiration: Moment
+  ) {
     return this.sendProviderMessage('ehrMessage', xpdat, {
       subject,
       body,
@@ -56,12 +64,12 @@ export default class PartnerApi {
     })
   }
 
-  putContent(body: Object) {
+  putContent(body: Record<string, any>) {
     const endpoint = `/partner/${this.partnerId}/content`
     return this.sendRequest(endpoint, 'put', body)
   }
 
-  deleteContent(body: Object) {
+  deleteContent(body: Record<string, any>) {
     const endpoint = `/partner/${this.partnerId}/content`
     return this.sendRequest(endpoint, 'delete', body)
   }
@@ -76,12 +84,12 @@ export default class PartnerApi {
     return this.sendRequest(endpoint, 'get')
   }
 
-  triggerTestEvent(data: Object) {
+  triggerTestEvent(data: Record<string, any>) {
     const endpoint = `/partner/${this.partnerId}/test`
     return this.sendRequest(endpoint, 'post', data)
   }
 
-  getPatientInfo(profileId: string, body: Object) {
+  getPatientInfo(profileId: string, body: Record<string, any>) {
     // const body = {
     //   xpdat,
     //   format // optional
@@ -100,7 +108,7 @@ export default class PartnerApi {
     return this.sendRequest(endpoint, 'get')
   }
 
-  putPatientRegisterEndpoint(body: Object) {
+  putPatientRegisterEndpoint(body: Record<string, any>) {
     const endpoint = `/partner/${this.partnerId}/endpoint/register_patient`
     return this.sendRequest(endpoint, 'put', body)
   }
@@ -115,9 +123,9 @@ export default class PartnerApi {
    * Registers profile then registers endpoint with profile as default
    */
   setPatientRegisterEndpointCreateProfile(profile: Profile, endpoint: string) {
-    let self = this
+    const self = this
     return this.registerProfile(profile.profileId, profile).then(function() {
-      let body = {
+      const body = {
         registerPatient: {
           endpoint,
           profile: profile.profileId
@@ -129,7 +137,7 @@ export default class PartnerApi {
 
   setFilters(filters: Filters) {
     const endpoint = `/partner/${this.partnerId}/filters`
-    let body = {
+    const body = {
       op: 'set', // default is 'set'
       filters
     }
@@ -138,7 +146,7 @@ export default class PartnerApi {
 
   addFilters(filters: Filters) {
     const endpoint = `/partner/${this.partnerId}/filters`
-    let body = {
+    const body = {
       op: 'add',
       filters
     }
@@ -165,7 +173,7 @@ export default class PartnerApi {
     return this.sendRequest(endpoint, 'post', {xpdat})
   }
 
-  putPreorderEndpoint(body: Object) {
+  putPreorderEndpoint(body: Record<string, any>) {
     const endpoint = `/partner/${this.partnerId}/endpoint/pre_order`
     return this.sendRequest(endpoint, 'put', body)
   }
@@ -179,13 +187,14 @@ export default class PartnerApi {
     const endpoint = `/partner/${this.partnerId}/endpoint/pre_order`
     return this.sendRequest(endpoint, 'delete')
   }
+
   /**
    * Registers profile then registers endpoint with profile as default
    */
   setPreordeEndpointCreateProfile(profile: Profile, endpoint: string) {
-    let self = this
+    const self = this
     return this.registerProfile(profile.profileId, profile).then(function() {
-      let body = {
+      const body = {
         preorder: {
           endpoint,
           profile: profile.profileId
@@ -195,7 +204,7 @@ export default class PartnerApi {
     })
   }
 
-  putPreorderForm(formId: string, body: Object) {
+  putPreorderForm(formId: string, body: Record<string, any>) {
     const endpoint = `/partner/${this.partnerId}/form/${formId}`
     return this.sendRequest(endpoint, 'put', body)
   }

@@ -1,4 +1,3 @@
-/** @flow */
 import yargs from 'yargs'
 
 // Ignore errors re self-signed certs on dev servers
@@ -27,5 +26,4 @@ yargs
   })
   .strict()
   .showHelpOnFail(true, 'Specify --help for available options')
-  .completion('completions', 'mytest-completion')
-  .argv
+  .completion('completions', 'mytest-completion').argv

@@ -1,24 +1,57 @@
 {
-  "parser"  : "babel-eslint",
-  "plugins" : [
-    "flowtype"
-  ],
-  "env" : {
-    "node" : true
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
   },
-  "extends" : [
-    "standard"
+  "plugins": [
+    "@typescript-eslint"
   ],
-  "globals" : {
+  "env": {
+    "es6": true,
+    "node": true
   },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
   "rules": {
-    "semi" : 0,
-    "max-len": [0, 120, 2],
-    "no-unneeded-ternary": 0,
-    "object-curly-spacing": ["error", "never"],
-    "flowtype/define-flow-type": 1,
-    "flowtype/use-flow-type": 1,
-    "space-before-function-paren": 0,
-    "no-unused-vars": 1
+    "quotes": [
+      "error",
+      "single",
+      {
+        "allowTemplateLiterals": true,
+        "avoidEscape": true
+      }
+    ],
+    "semi": [
+      "error",
+      "never"
+    ],
+    "@typescript-eslint/member-delimiter-style": [
+      "error",
+      {
+        "multiline": {
+          "delimiter": "none",
+          "requireLast": false
+        },
+        "singleline": {
+          "delimiter": "comma",
+          "requireLast": false
+        }
+      }
+    ],
+    "@typescript-eslint/no-this-alias": [
+      "error",
+      {
+        "allowDestructuring": true,
+        "allowedNames": ["self"]
+      }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "babel-module": {}
+    }
   }
 }

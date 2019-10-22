@@ -1,26 +1,25 @@
-/** @flow */
 import _ from 'lodash'
 import PartnerApi from '~/partnerApi'
 import loadConfig from '~/config'
 
-import type {EnrollPatientBody} from '~/partnerApi'
+import {EnrollPatientBody} from '~/partnerApi'
 
-function getEnrollBody(config: Object, argv: Object): EnrollPatientBody {
-  const  {
-    deployment,
-    id: patientId,
-    type: patientIdType
-  } = argv
+function getEnrollBody(config: Record<string, any>, argv: any): EnrollPatientBody {
+  const {deployment, id: patientId, type: patientIdType} = argv
   return {
     deployment: deployment || _.get(config, 'test.deployment'),
     patientId: patientId || _.get(config, 'test.patient.id'),
-    patientIdType: patientIdType || _.get(config, 'test.patient.type') || 'enterprise'
+    patientIdType:
+      patientIdType || _.get(config, 'test.patient.type') || 'enterprise'
   }
 }
 
 function main(argv) {
   const config = loadConfig(argv)
-  const api = new PartnerApi(config.partnerId, config.keyInfo, {baseUrl: config.serverBase, verbose: argv.verbose})
+  const api = new PartnerApi(config.partnerId, config.keyInfo, {
+    baseUrl: config.serverBase,
+    verbose: argv.verbose
+  })
   return api.enrollPatient(getEnrollBody(config, argv)).then(response => {
     console.log(response.body.xpdat)
   })
@@ -40,10 +39,12 @@ exports.builder = {
     describe: 'Patient id type (overrides default from config)'
   }
 }
-exports.handler = function(argv: Object) {
-  return Promise.resolve().then(function() {
-    return main(argv)
-  }).catch(function(err) {
-    console.error('Oops:\n', err)
-  })
+exports.handler = function(argv: Record<string, any>) {
+  return Promise.resolve()
+    .then(function() {
+      return main(argv)
+    })
+    .catch(function(err) {
+      console.error('Oops:\n', err)
+    })
 }

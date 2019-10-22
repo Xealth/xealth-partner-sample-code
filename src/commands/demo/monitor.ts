@@ -1,4 +1,3 @@
-/** @flow */
 import _ from 'lodash'
 import Sender from '~/sender'
 import loadConfig from '~/config'
@@ -15,9 +14,12 @@ function send(sender, body, endpointName, method = 'PUT') {
     console.log(`Skipping (no endpoint for '${endpointName}' in config)`)
     return Promise.resolve()
   }
-  return sender.sendRequest(endpoint, method, body).catch((/* err */) => {
-    // Swallow error to keep going...
-  })
+  return sender.sendRequest(endpoint, method, body).catch(() =>
+    /* err */
+    {
+      // Swallow error to keep going...
+    }
+  )
 }
 
 function getCommonBody() {
@@ -41,7 +43,7 @@ function getPrograms(sender) {
  * Simulates Xealth calling your endpoint
  */
 function getProgramUrl(sender) {
-  let body = Object.assign({}, getCommonBody(), {
+  const body = Object.assign({}, getCommonBody(), {
     programId: '1'
   })
   return send(sender, body, 'getProgramUrl')
@@ -49,18 +51,20 @@ function getProgramUrl(sender) {
 
 function main(argv) {
   config = loadConfig(argv)
-  let sender = new Sender(config.keyInfo, argv)
+  const sender = new Sender(config.keyInfo, argv)
   return getPrograms(sender).then(function() {
     return getProgramUrl(sender)
-  });
+  })
 }
 
 exports.command = 'monitor'
 exports.describe = 'Send test requests to monitor view endpoints'
-exports.handler = function(argv: Object) {
-  return Promise.resolve().then(function() {
-    return main(argv)
-  }).catch(function(err) {
-    console.error('Oops:\n', err)
-  })
+exports.handler = function(argv: Record<string, any>) {
+  return Promise.resolve()
+    .then(function() {
+      return main(argv)
+    })
+    .catch(function(err) {
+      console.error('Oops:\n', err)
+    })
 }

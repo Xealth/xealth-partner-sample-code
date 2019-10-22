@@ -1,4 +1,3 @@
-/** @flow */
 import PartnerApi from '~/partnerApi'
 import loadConfig from '~/config'
 
@@ -9,11 +8,12 @@ import loadConfig from '~/config'
  *  2) using endpoint test api to trigger test call to your endpoint
  *
  */
-
 function registerEndpointAndProfile(config, api) {
-  let endpoint = config.endpoints.registerPatient
+  const endpoint = config.endpoints.registerPatient
   if (endpoint === null || endpoint === undefined) {
-    console.log('Skipping patient register endpoint step (no endpoint in config)')
+    console.log(
+      'Skipping patient register endpoint step (no endpoint in config)'
+    )
     return Promise.resolve()
   }
 
@@ -30,7 +30,7 @@ function registerEndpointAndProfile(config, api) {
 function demo(config, api) {
   return registerEndpointAndProfile(config, api).then(function() {
     // Test data to send to Xealth
-    let requestBody = {
+    const requestBody = {
       // deployment and patient id must be set correctly for test to work
       deployment: config.test.deployment,
       patientId: config.test.patient.id,
@@ -39,27 +39,35 @@ function demo(config, api) {
       programId: 'myprogramid',
       orderId: 'someorderid'
     }
-    return api.triggerTestEvent(requestBody).then(function(response) {
-      // Your endpoint should have been called by the time this function is called
-      return response
-    }).then(function(resp) {
-      console.log(JSON.stringify(resp, null, 2))
-    })
+    return api
+      .triggerTestEvent(requestBody)
+      .then(function(response) {
+        // Your endpoint should have been called by the time this function is called
+        return response
+      })
+      .then(function(resp) {
+        console.log(JSON.stringify(resp, null, 2))
+      })
   })
 }
 
 function main(argv) {
-  let config = loadConfig(argv)
-  const api = new PartnerApi(config.partnerId, config.keyInfo, {baseUrl: config.serverBase, verbose: argv.verbose})
+  const config = loadConfig(argv)
+  const api = new PartnerApi(config.partnerId, config.keyInfo, {
+    baseUrl: config.serverBase,
+    verbose: argv.verbose
+  })
   return demo(config, api)
 }
 
 exports.command = 'register'
 exports.describe = 'Patient registration endpoint example'
-exports.handler = function(argv: Object) {
-  return Promise.resolve().then(function() {
-    return main(argv)
-  }).catch(function(err) {
-    console.error('Oops:\n', err)
-  })
+exports.handler = function(argv: Record<string, any>) {
+  return Promise.resolve()
+    .then(function() {
+      return main(argv)
+    })
+    .catch(function(err) {
+      console.error('Oops:\n', err)
+    })
 }
