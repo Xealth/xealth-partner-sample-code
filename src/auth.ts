@@ -1,4 +1,3 @@
-/** @flow */
 import crypto from 'crypto'
 import moment from 'moment'
 import Url from 'url'
@@ -9,7 +8,7 @@ export type RequestParam = {
   url: string,
   method: string,
   queryString?: string,
-  body?: ?Object,
+  body?: Record<string, any> | null,
   json?: boolean,
   accept?: string
 }
@@ -19,47 +18,42 @@ export type RequestParam = {
  * Adds Authorization headers
  */
 export function createRequestOptions(param: RequestParam) {
-  let {
-    apiKey, secret, url, method, queryString, body, json, accept
-  } = param;
+  const {apiKey, secret, url, method, queryString, body, json, accept = 'application/json'} = param
 
-  if (!accept) {
-    accept = 'application/json'
-  }
-
-  let fullPath = (queryString) ? `${url}?${queryString}` : url
+  const fullPath = queryString ? `${url}?${queryString}` : url
   // This creates ISO 8601 date string (required format)
-  let dateStr = moment.utc().format()
-  let parsedUrl = Url.parse(fullPath)
-  let stringToSign = [
+  const dateStr = moment.utc().format()
+  const parsedUrl = Url.parse(fullPath)
+  const stringToSign = [
     method.toUpperCase(),
     parsedUrl.path,
     parsedUrl.hostname,
     accept,
     dateStr
-  ].join('\n');
-  let hash = crypto.createHmac('sha256', secret)
+  ].join('\n')
+  const hash = crypto
+    .createHmac('sha256', secret)
     .update(stringToSign)
     .digest('base64')
-  let auth = `XEALTH ${apiKey}:${hash}`
-  let options: Object = {
+  const auth = `XEALTH ${apiKey}:${hash}`
+  let options: Record<string, any> = {
     url,
     method,
     headers: {
-      'Accept': accept,
-      'Date': dateStr,
-      'Authorization': auth
+      Accept: accept,
+      Date: dateStr,
+      Authorization: auth
     }
   }
 
   if (body) {
-    options = Object.assign(options, { body })
+    options = Object.assign(options, {body})
   }
   if (json) {
-    options = Object.assign(options, { json })
+    options = Object.assign(options, {json})
   }
   if (queryString) {
-    options = Object.assign(options, { qs: queryString })
+    options = Object.assign(options, {qs: queryString})
   }
   return options
 }

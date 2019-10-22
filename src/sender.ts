@@ -29,7 +29,7 @@ function dumpResponse(response, verbosity) {
 }
 
 export type Opts = {
-  verbose?: number
+  verbose?: number,
   baseUrl?: string
 }
 
@@ -38,7 +38,7 @@ const DEFAULT_OPTS: Opts = {
 }
 
 export type KeyInfo = {
-  apiKey: string
+  apiKey: string,
   secret: string
 }
 

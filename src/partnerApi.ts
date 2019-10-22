@@ -8,14 +8,14 @@ type Profile = any
 
 export type ProviderMessage = 'alert' | 'ehrMessage' | 'contextual'
 export type EnrollPatientBody = {
-  deployment: string
-  patientId: string
+  deployment: string,
+  patientId: string,
   patientIdType: string
 }
 
 export type RegisterProfileBody = {
-  attributes: Array<string>
-  startDate?: string
+  attributes: Array<string>,
+  startDate?: string,
   endDate?: string
 }
 
