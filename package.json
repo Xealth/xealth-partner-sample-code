@@ -8,8 +8,8 @@
     "lib/"
   ],
   "scripts": {
-    "audit-checker": "check-audit",
-    "audit-resolver": "resolve-audit",
+    "audit-checker": "check-audit --production",
+    "audit-resolver": "resolve-audit --production",
     "build": "npm run build:types && npm run build:js",
     "build:types": "tsc --emitDeclarationOnly",
     "build:js": "babel src --out-dir lib --extensions .ts --source-maps inline",
@@ -21,31 +21,32 @@
   "repository": "github:Xealth/xealth-partner-sample-code",
   "license": "MIT",
   "dependencies": {
-    "@types/lodash": "^4.14.162",
-    "@types/request-promise": "^4.1.46",
-    "@types/yargs": "^13.0.11",
     "chalk": "^2.4.2",
     "http-status-codes": "^1.4.0",
     "lodash": "^4.17.20",
-    "moment": "^2.29.1",
+    "moment": "^2.29.2",
     "read-yaml": "^1.1.0",
     "request": "^2.88.2",
     "request-promise-native": "^1.0.9",
-    "yargs": "^14.2.3"
+    "yargs": "^17.3.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.12.1",
-    "@babel/core": "^7.12.3",
-    "@babel/plugin-proposal-class-properties": "^7.12.1",
-    "@babel/plugin-proposal-object-rest-spread": "^7.12.1",
-    "@babel/preset-env": "^7.12.1",
-    "@babel/preset-typescript": "^7.12.1",
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.8",
+    "@babel/plugin-proposal-class-properties": "^7.16.7",
+    "@babel/plugin-proposal-object-rest-spread": "^7.17.3",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-typescript": "^7.16.7",
+    "@types/chalk": "^2.2.0",
+    "@types/lodash": "^4.14.180",
+    "@types/request-promise": "^4.1.48",
+    "@types/yargs": "^17.0.10",
     "@typescript-eslint/eslint-plugin": "^2.34.0",
     "@typescript-eslint/parser": "^2.34.0",
     "babel-plugin-module-resolver": "^3.2.0",
     "eslint": "^6.8.0",
-    "eslint-import-resolver-babel-module": "^5.2.0",
-    "npm-audit-resolver": "^2.2.1",
-    "typescript": "^3.9.7"
+    "eslint-import-resolver-babel-module": "^5.3.1",
+    "npm-audit-resolver": "^2.3.1",
+    "typescript": "^3.9.10"
   }
 }
