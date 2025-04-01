@@ -1,0 +1,22 @@
+{
+  "decisions": {
+    "1096727|request": {
+      "decision": "ignore",
+      "madeAt": 1743531783143
+    },
+    "1096727|request-promise-native>request": {
+      "decision": "ignore",
+      "madeAt": 1743531783143
+    },
+    "1097682|request>tough-cookie": {
+      "decision": "ignore",
+      "madeAt": 1743531788036
+    },
+    "1097682|request-promise-native>request>tough-cookie": {
+      "decision": "ignore",
+      "madeAt": 1743531788036
+    }
+  },
+  "rules": {},
+  "version": 1
+}
