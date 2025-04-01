@@ -13,7 +13,7 @@ function _readConfig(filename: string): Record<string, any> {
   try {
     config = read.sync(filename)
   } catch (err) {
-    if (err.code === 'ENOENT') {
+    if ((err as NodeJS.ErrnoException).code === 'ENOENT') {
       console.log(
         `Missing config file (not found in ${process.cwd()}): ${filename}`
       )
